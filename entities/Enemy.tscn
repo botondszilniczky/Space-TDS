@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg01x18qm1s2m"]
+
+[ext_resource type="Script" uid="uid://debkjo16xkrjo" path="res://entities/Enemy.gd" id="1_s7bn3"]
+[ext_resource type="PackedScene" uid="uid://cqrcrcsr7vvdb" path="res://entities/Health.tscn" id="3_a23sr"]
+[ext_resource type="Texture2D" uid="uid://q1vs6ew2jlfj" path="res://assets/kenney_simple-space/Spritesheet/simpleSpace_sheet.png" id="3_qp131"]
+[ext_resource type="PackedScene" uid="uid://bjl1ywqfclsop" path="res://weapons/Weapon.tscn" id="4_vec32"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(46, 48)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_s7bn3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("3_qp131")
+region_enabled = true
+region_rect = Rect2(0, 193, 52, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Health" parent="." instance=ExtResource("3_a23sr")]
+
+[node name="Weapon" parent="." instance=ExtResource("4_vec32")]

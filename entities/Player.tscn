@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://3oxjr0doebob"]
+
+[ext_resource type="Script" uid="uid://shtlfd5fi7mq" path="res://entities/Player.gd" id="1_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://q1vs6ew2jlfj" path="res://assets/kenney_simple-space/Spritesheet/simpleSpace_sheet.png" id="2_kne1u"]
+[ext_resource type="PackedScene" uid="uid://cqrcrcsr7vvdb" path="res://entities/Health.tscn" id="3_lw5ub"]
+[ext_resource type="PackedScene" uid="uid://bjl1ywqfclsop" path="res://weapons/Weapon.tscn" id="4_ks8m5"]
+[ext_resource type="PackedScene" uid="uid://cjrk1rw3sh84m" path="res://weapons/Bullet.tscn" id="5_l1ths"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(46, 48)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_kpjcp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_kne1u")
+region_enabled = true
+region_rect = Rect2(1, 369, 50, 51)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Health" parent="." instance=ExtResource("3_lw5ub")]
+
+[node name="Weapon" parent="." instance=ExtResource("4_ks8m5")]
+Projectile = ExtResource("5_l1ths")

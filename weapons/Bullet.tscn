@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjrk1rw3sh84m"]
+
+[ext_resource type="Script" uid="uid://2rqcembmne8b" path="res://weapons/Bullet.gd" id="1_4s4u5"]
+[ext_resource type="Texture2D" uid="uid://ky2uqbwl4h6q" path="res://assets/kenney_simple-space/Tilesheet/simpleSpace_tilesheet.png" id="1_ayd6b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4s4u5"]
+radius = 4.0
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_4s4u5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ayd6b")
+region_enabled = true
+region_rect = Rect2(280, 216, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4s4u5")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
